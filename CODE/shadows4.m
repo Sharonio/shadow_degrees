@@ -28,8 +28,10 @@ h_prev = preview(vid);
 %>>> Draw a white window. place it in the 'projector side'
 h_white_scrn = figure;
 
+% set(h_white_scrn,'Color','w','menubar','none','position',...
+%     [      2000      1     1740        1058]);
 set(h_white_scrn,'Color','w','menubar','none','position',...
-    [      2000      1     1740        1058]);
+    [1412           1        1896         994]);
 
 % get(gcf,'position');
 jFrame = undecorateFig(h_white_scrn);
@@ -72,9 +74,16 @@ try
         %     script_to_run_in_loop = mode_array{2};
         
         run( script_to_run_in_loop );
+        drawnow
         %scrp_video_recorder;
+        
+        scrpt_chk_time_and_reset;
     end
 catch
+    fid = fopen('log.txt','at');
+    fprintf(fid, 'Stopped due to error! %s\n',datestr(now) );
+    fclose(fid);
+    
     stoppreview(vid);
 %    close(vid_out);
     disp('catched');
