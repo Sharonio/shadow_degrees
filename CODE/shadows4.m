@@ -1,4 +1,8 @@
 %>>> check if preview window is open, if open close it.
+fid = fopen('log.txt','at');
+fprintf(fid, 'start at %s\n',datestr(now) );
+fclose(fid);
+
 if exist('vid','var')
     closepreview(vid);
 end
@@ -81,14 +85,14 @@ try
     end
 catch ME
     fid = fopen('log.txt','at');
-    fprintf(fid, 'Stopped due to error! %s , %s\n',datestr(now) , ME.identifier );    
+    fprintf(fid, 'Stopped due to error! %s , %s\n',datestr(now) , ME.identifier );
     fclose(fid);
-
-%     setpref('Internet','SMTP_Server','myserver.myhost.com');
-%     sendmail('oriansharoni@gmail.com',sprintf('Stopped due to error! %s , %s\n',datestr(now) , ME.identifier ));
+    
+    %     setpref('Internet','SMTP_Server','myserver.myhost.com');
+    %     sendmail('oriansharoni@gmail.com',sprintf('Stopped due to error! %s , %s\n',datestr(now) , ME.identifier ));
     
     stoppreview(vid);
-%    close(vid_out);
+    %    close(vid_out);
     disp('catched');
 end
 

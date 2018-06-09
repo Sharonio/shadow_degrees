@@ -3,3 +3,4 @@ shutdown at 09-Jun-2018 17:18:33
 Stopped due to error! 09-Jun-2018 17:18:38
 Stopped due to error! 09-Jun-2018 17:25:09 , MATLAB:class:InvalidHandle
 Stopped due to error! 09-Jun-2018 17:30:15 , MATLAB:class:InvalidHandle
+Stopped due to error! 09-Jun-2018 17:39:35 , MATLAB:class:InvalidHandle
