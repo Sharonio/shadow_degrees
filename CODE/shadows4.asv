@@ -84,8 +84,7 @@ catch ME
     fprintf(fid, 'Stopped due to error! %s , %s\n',datestr(now) , ME.identifier );    
     fclose(fid);
 
-%     setpref('Internet','SMTP_Server','myserver.myhost.com');
-%     sendmail('oriansharoni@gmail.com',sprintf('Stopped due to error! %s , %s\n',datestr(now) , ME.identifier ));
+    sendmail('oriansharoni@gmail.com',)
     
     stoppreview(vid);
 %    close(vid_out);
