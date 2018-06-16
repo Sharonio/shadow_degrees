@@ -1,6 +1,6 @@
 %>>> check if preview window is open, if open close it.
-fid = fopen('log.txt','at');
-fprintf(fid, 'start at %s\n',datestr(now) );
+fid = fopen('log.csv','at');
+fprintf(fid, 'wakeup,%s\n',datestr(now) );
 fclose(fid);
 
 if exist('vid','var')
@@ -10,20 +10,22 @@ end
 %>>> Clear everything
 close all; clc; clear
 
-
-% >>> autoshutdown related
-shutdown_time = [17,35,3]; % hours,minutes, smaller than seconds
+% >>> autoshutdown and time-log related
+shutdown_time = [02,00,3]; % hours,minutes, smaller than seconds
 shutdown_initiated_flg = false;
-
+alive_log_period_min = 1;
+last_time_alive_log_written = now - alive_log_period_min/(24*60);
 
 % >>> Loop related
 N_sec_per_mode = 40;
 
 % >>> Others
 scaling_factor = 1;
+now_val_date_vect = datevec(now);
+person_detect_log_period_min = 1;
+last_time_person_detect_log_written = now - person_detect_log_period_min/(24*60);
 
 % >>> Person detectiopn related
-now_val_date_vect = datevec(now);
 person_detection_threshold = 0.05;
 person_detection_flg = false;
 
@@ -65,7 +67,8 @@ cur_ylim = get(gca,'ylim');
 
 %>>> Pause 1 second to let the camera start working
 pause(3);
-scrpt_calibrate_interest_area;
+% scrpt_calibrate_interest_area;
+
 % save('calibration_26_12.mat', 'x_left_border', 'x_right_border',...
 %     'y_bottom_border', 'y_up_border','img_height', 'img_width');
 load('calibration_26_12.mat');
@@ -101,8 +104,8 @@ try
         scrpt_chk_time_and_reset;
     end
 catch ME
-    fid = fopen('log.txt','at');
-    fprintf(fid, 'Stopped due to error! %s , %s\n',datestr(now) , ME.identifier );
+    fid = fopen('log.csv','at');
+    fprintf(fid, 'Stopped,%s,%s\n',datestr(now) , ME.identifier );
     fclose(fid);
     
     %     setpref('Internet','SMTP_Server','myserver.myhost.com');
