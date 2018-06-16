@@ -97,6 +97,10 @@ end
 %     im_to_show=ones(size(im_to_show), 'uint8');
 % end
 
+
+person_detection_value_norm = sum( (im_to_show(:)==0)/numel(im_to_show) );
+
+
 %>> Print it on the "progector side" window
 figure(h_white_scrn)
 image( im_to_show );

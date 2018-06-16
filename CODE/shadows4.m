@@ -10,8 +10,26 @@ end
 %>>> Clear everything
 close all; clc; clear
 
+
+% >>> autoshutdown related
+shutdown_time = [17,35,3]; % hours,minutes, smaller than seconds
+shutdown_initiated_flg = false;
+
+
+% >>> Loop related
+N_sec_per_mode = 40;
+
+% >>> Others
 scaling_factor = 1;
+
+% >>> Person detectiopn related
 now_val_date_vect = datevec(now);
+person_detection_threshold = 0.05;
+person_detection_flg = false;
+
+% % time_from_last_person_detection
+
+
 % vid_out = VideoWriter( sprintf('.\\films\\%d_%d_%d_%d_%d_%d.avi',now_val_date_vect(1),now_val_date_vect(2),...
 %     now_val_date_vect(3),now_val_date_vect(4),now_val_date_vect(5),...
 %     round(now_val_date_vect(6)) ) ) ;
@@ -20,7 +38,7 @@ now_val_date_vect = datevec(now);
 % mode_array = { 'scrpt_mirror_shadow_code','scrpt_mirror_shadow_scaled_code',...
 %     'scrpt_mirror_cartton_code','scrpt_mirror_shadow_all_scrn_code',...
 %     'scrpt_white_shdw_all_scrn_code' };
-mode_array = {'scrpt_mirror_shadow_upview_code' ,'scrpt_mirror_cartton_code', 'scrpt_white_shdw_all_scrn_code'}; %,'scrpt_mirror_shadow_all_scrn_code','scrpt_white_shdw_all_scrn_code' };
+mode_array = {'scrpt_mirror_shadow_upview_code' ,'scrpt_mirror_cartton_code'}; %, 'scrpt_white_shdw_all_scrn_code'}; %,'scrpt_mirror_shadow_all_scrn_code','scrpt_white_shdw_all_scrn_code' };
 N_modes = length(mode_array);
 
 %>>> Initialize camera and open preview window
@@ -67,7 +85,7 @@ end
 
 %% the loop
 k = 0;
-N_sec_per_mode = 20;
+
 try
     
     while(1)

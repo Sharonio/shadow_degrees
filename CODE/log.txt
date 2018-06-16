@@ -11757,3 +11757,13 @@ Stopped due to error! 16-Jun-2018 17:04:41 , MATLAB:class:InvalidHandle
 shutdown at 16-Jun-2018 17:04:53
 start at 16-Jun-2018 17:06:19
 Stopped due to error! 16-Jun-2018 17:06:45 , MATLAB:class:InvalidHandle
+start at 16-Jun-2018 17:08:48
+Stopped due to error! 16-Jun-2018 17:09:32 , MATLAB:class:InvalidHandle
+start at 16-Jun-2018 17:11:03
+Stopped due to error! 16-Jun-2018 17:12:37 , MATLAB:class:InvalidHandle
+start at 16-Jun-2018 17:33:39
+start at 16-Jun-2018 17:33:55
+start at 16-Jun-2018 17:34:46
+shutdown at 16-Jun-2018 17:35:00
+start at 16-Jun-2018 17:36:31
+Stopped due to error! 16-Jun-2018 17:37:31 , MATLAB:class:InvalidHandle
