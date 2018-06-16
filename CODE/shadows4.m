@@ -48,10 +48,9 @@ cur_ylim = get(gca,'ylim');
 %>>> Pause 1 second to let the camera start working
 pause(3);
 scrpt_calibrate_interest_area;
-save('calibration_26_12.mat', 'x_left_border', 'x_right_border',...
-    'y_bottom_border', 'y_up_border','img_height', 'img_width');
-
-% load('calibration_26_12.mat');
+% save('calibration_26_12.mat', 'x_left_border', 'x_right_border',...
+%     'y_bottom_border', 'y_up_border','img_height', 'img_width');
+load('calibration_26_12.mat');
 % scrpt_calibrate_interest_area2
 
 %>>> Draw a window with subplots for debugging purposes
