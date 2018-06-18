@@ -2,8 +2,11 @@
 
 new_img = get(h_prev,'CData');
 new_img_gray = uint8( mean( new_img,3 ) );
-margin = 20;
+margin_vert = 20;
+margin_horiz = 30;
+
 tolerance = 0.98;
+
 figure()
 
 im_threshold = new_img_gray > 50;
@@ -24,7 +27,7 @@ while( rect_sum>=tolerance);
     curr_rect = im_threshold( round(img_height/2)+[y_up_border:y_bottom_border] , round(img_width/2)+[x_left_border:x_right_border] );
     rect_sum = sum( curr_rect(:) )/length(curr_rect(:));
 end
-y_up_border = y_up_border+margin;
+y_up_border = y_up_border+margin_vert;
 rect_sum = tolerance;
 disp('go');
 
@@ -34,7 +37,7 @@ while( rect_sum>=tolerance);
     curr_rect = im_threshold( round(img_height/2)+[y_up_border:y_bottom_border] , round(img_width/2)+[x_left_border:x_right_border] );
     rect_sum = sum( curr_rect(:) )/length(curr_rect(:));
 end
-y_bottom_border = y_bottom_border-margin;
+y_bottom_border = y_bottom_border-margin_vert;
 % y_bottom_border = y_bottom_border-50;
 % y_bottom_border = y_bottom_border+50;
 rect_sum = tolerance;
@@ -44,7 +47,7 @@ while( rect_sum>=tolerance);
     curr_rect = im_threshold( round(img_height/2)+[y_up_border:y_bottom_border] , round(img_width/2)+[x_left_border:x_right_border] );
     rect_sum = sum( curr_rect(:) )/length(curr_rect(:));
 end
-x_left_border = x_left_border+margin;
+x_left_border = x_left_border+margin_horiz;
 rect_sum = tolerance;
 disp('Ready');
 
@@ -53,7 +56,7 @@ while( rect_sum>=tolerance);
     curr_rect = im_threshold( round(img_height/2)+[y_up_border:y_bottom_border] , round(img_width/2)+[x_left_border:x_right_border] );
     rect_sum = sum( curr_rect(:) )/length(curr_rect(:));
 end
-x_right_border = x_right_border-margin;
+x_right_border = x_right_border-margin_horiz;
 rect_sum = tolerance;
 disp('steady');
 

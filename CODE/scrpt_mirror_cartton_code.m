@@ -88,11 +88,11 @@ middle_fixing = 3;
 
 mid_line_sum = sum( tmp( : , halfImage+3 ) )/255/size(tmp,1);
 
-if ( mid_line_sum>0.2)
-    im_to_show( : , end:-1:(end-(halfImage-middle_fixing)+1)) = tmp( : ,1:(halfImage-middle_fixing) );
-else
+% if ( mid_line_sum>0.2)
+%     im_to_show( : , end:-1:(end-(halfImage-middle_fixing)+1)) = tmp( : ,1:(halfImage-middle_fixing) );
+% else
     im_to_show( : , 1:(halfImage-middle_fixing)) = tmp( : , end:-1:(end-(halfImage-middle_fixing)+1));
-end
+% end
 
 
 

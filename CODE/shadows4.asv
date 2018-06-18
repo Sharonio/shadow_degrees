@@ -17,7 +17,7 @@ alive_log_period_min = 15;
 last_time_alive_log_written = now - alive_log_period_min/(24*60);
 
 % >>> Loop related
-N_sec_per_mode = 25;
+N_sec_per_mode = 10;
 last_time_mode_changed = now;
 
 % >>> Others
@@ -114,13 +114,11 @@ try
     while(1)
         
         if ( ((now-last_time_mode_changed)*24*60*60) > N_sec_per_mode )
-            k=mod(k+1,N_modes);
-            last_time_mode_changed = now;
+            k=k+1;
         end
         
-        script_to_run_in_loop = mode_array{ k+1 };
         
-%         script_to_run_in_loop = mode_array{ mod(round(k/(N_sec_per_mode*25)),N_modes)+1 }; % 100 is 4 sec
+        script_to_run_in_loop = mode_array{ mod(round(k/(N_sec_per_mode*25)),N_modes)+1 }; % 100 is 4 sec
         
         %     script_to_run_in_loop = mode_array{2};
         

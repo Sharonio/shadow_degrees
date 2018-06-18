@@ -98,10 +98,10 @@ end
 % end
 
 
-person_detection_value_norm = sum( (im_to_show(:)==0)/numel(im_to_show) );
-if ( person_detection_value_norm > person_detection_threshold )
-    person_detection_flg=true;
-end
+% person_detection_value_norm = sum( (im_to_show(:)==0)/numel(im_to_show) );
+% if ( person_detection_value_norm > person_detection_threshold )
+%     person_detection_flg=true;
+% end
 
 %>> Print it on the "progector side" window
 figure(h_white_scrn)
