@@ -11,7 +11,7 @@ end
 close all; clc; clear
 
 % >>> autoshutdown and time-log related
-shutdown_time = [14,47,3]; % hours,minutes, smaller than seconds
+shutdown_time = [02,02,02]; % hours,minutes, smaller than seconds
 shutdown_initiated_flg = false;
 alive_log_period_min = 15;
 last_time_alive_log_written = now - alive_log_period_min/(24*60);
@@ -19,6 +19,7 @@ last_time_alive_log_written = now - alive_log_period_min/(24*60);
 % >>> Loop related
 N_sec_per_mode = 25;
 last_time_mode_changed = now;
+show_ghost_flg = 1;
 
 % >>> Others
 scaling_factor = 1;
@@ -41,7 +42,9 @@ person_detection_flg = false;
 % mode_array = { 'scrpt_mirror_shadow_code','scrpt_mirror_shadow_scaled_code',...
 %     'scrpt_mirror_cartton_code','scrpt_mirror_shadow_all_scrn_code',...
 %     'scrpt_white_shdw_all_scrn_code' };
-mode_array = {'scrpt_mirror_shadow_upview_code' ,'scrpt_mirror_cartton_code'}; %, 'scrpt_white_shdw_all_scrn_code'}; %,'scrpt_mirror_shadow_all_scrn_code','scrpt_white_shdw_all_scrn_code' };
+% mode_array = {'scrpt_mirror_shadow_upview_code' ,'scrpt_mirror_cartton_code'}; %, 'scrpt_white_shdw_all_scrn_code'}; %,'scrpt_mirror_shadow_all_scrn_code','scrpt_white_shdw_all_scrn_code' };
+mode_array = {'scrpt_mirror_cartton_code_trapeze' ,'scrpt_mirror_cartton_code', 'scrpt_mirror_shadow_code_trapeze', 'scrpt_mirror_shadow_code'};
+
 
 % mode_array = {'scrpt_mirror_cartton_code' ,'scrpt_mirror_cartton_code'}; %, 'scrpt_white_shdw_all_scrn_code'}; %,'scrpt_mirror_shadow_all_scrn_code','scrpt_white_shdw_all_scrn_code' };
 
@@ -88,11 +91,15 @@ cur_ylim = get(gca,'ylim');
 pause(2);
 % scrpt_calibrate_interest_area_manual;
 % scrpt_calibrate_interest_area;
+% scrpt_calibrate_interest_area_museum
+% save('calibration_museum_trapeze.mat', corners);
+load('calibration_museum_trapeze.mat');
 
-% save('calibration_museum1.mat', 'x_left_border', 'x_right_border',...
+% save('calibration_museum2.mat', 'x_left_border', 'x_right_border',...
 %     'y_bottom_border', 'y_up_border','img_height', 'img_width');
 load('calibration_museum1.mat');
 % scrpt_calibrate_interest_area2
+
 
 %>>> Draw a window with subplots for debugging purposes
 debug_mode_flg = 0; % mark with '1' to draw this window
